@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.atlassian.confluence.plugin.base</groupId>
+        <artifactId>confluence-plugin-base</artifactId>
+        <version>10</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.utou.confluence.plugins</groupId>
+    <artifactId>tiddlywiki</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name><!-- TODO: Add a name for your plugin --></name>
+    <packaging>atlassian-plugin</packaging>
+
+    <properties>
+        <atlassian.plugin.key>ch.utou.confluence.plugins.tiddlywiki</atlassian.plugin.key>
+        <atlassian.pdk.server.url>http://localhost:1990/tiddlywiki</atlassian.pdk.server.url>
+        <!-- TODO: set username/password for your confluence install -->
+        <atlassian.pdk.server.username>admin</atlassian.pdk.server.username>
+        <atlassian.pdk.server.password>admin</atlassian.pdk.server.password>
+        <atlassian.product.version>2.9.2</atlassian.product.version>
+    </properties>
+
+    <!-- TODO: Add project description -->
+    <!--
+    <description></description>
+	<url></url>
+    -->
+
+    <!-- TODO: Complete developer details -->
+    <!--
+	<developers>
+		<developer>
+			<name>John Smith</name>
+			<organization>Example Company</organization>
+		</developer>
+	</developers>
+	-->
+
+    <!-- TODO: Complete source control details -->
+    <!--
+    <scm>
+		<connection></connection>
+		<developerConnection></developerConnection>
+		<url></url>
+	</scm>
+	-->
+
+</project>

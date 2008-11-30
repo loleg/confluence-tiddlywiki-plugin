@@ -1,0 +1,27 @@
+#if($spaceKey)
+<style type="text/css">
+div.downloadTiddlyWiki {
+	border:1px dashed gray;
+	display:block;
+	margin:0.1em 0;
+	padding:0.5em;
+	width:300px;
+}
+div.downloadTiddlyWiki a.dltw {
+	font-size:1.5em;
+	font-weight:bold;
+}
+div.downloadTiddlyWiki a.dltw:hover {
+	background-color:#ff9;
+}
+div.downloadTiddlyWiki p {
+	margin:.5em 0 0;
+}
+</style>
+<div class="downloadTiddlyWiki">
+<a class="dltw" href="/plugins/tiddlywiki/tiddlywiki.action?key=$spaceKey">$linkTitle</a>
+<p>Right-click this link and <b>Save As ... tiddlywiki.html</b> file to download all 
+pages in the current space to a <a href="http://www.tiddlywiki.com">TiddlyWiki</a> 
+that you can take off-line, save to a USB stick, or share with a friend.</p>
+</div>
+#end

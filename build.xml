@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="Confluence plugin build" default="usage" basedir=".">
+
+	<property file="build.properties"/>
+
+	<path id="all-libs">
+        <pathelement path="${webapp.classes.dir}"/>
+        <pathelement path="${webapp.classes.dir}"/>
+		<fileset dir="${webapp.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${webapp.commonlib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="usage">
+		<echo message=""/>
+		<echo message="${name} build file"/>
+		<echo message="------------------------------------------------------"/>
+		<echo message=""/>
+		<echo message="Among the available targets are:"/>
+		<echo message=""/>
+		<echo message="build     --> build the plugin JAR"/>
+		<echo message="clean     --> clean the plugin JAR"/>
+		<echo message=""/>
+	</target>
+	<target name="build" description="Build the plugin">
+        <!-- create output folder for files to compile-->
+		<mkdir dir="bin"/>
+		<!-- copy resources -->
+		<copy todir="bin" preservelastmodified="true">
+            <fileset dir="src/main/resources" />
+        </copy>
+        <!-- compile source files to build directory -->
+        <javac destdir="bin" target="1.6" debug="${debug}" deprecation="false" optimize="false" failonerror="true">
+			<src path="src/main/java"/>
+			<classpath refid="all-libs"/>
+		</javac>
+    </target>
+    <target name="dist" description="Prepare JAR package" depends="build">
+        <!-- create output folder -->
+        <mkdir dir="dist"/>
+        <!-- create a jar with compiled files and include assets -->
+		<jar jarfile="dist/${library}.jar">
+            <fileset dir="bin" />
+            <fileset dir="src/main/resources" />
+        </jar>
+    </target>
+    <target name="clean" description="Clean a macro build">
+		<delete dir="dist"/>
+		<delete dir="bin"/>
+    </target>
+
+</project>
