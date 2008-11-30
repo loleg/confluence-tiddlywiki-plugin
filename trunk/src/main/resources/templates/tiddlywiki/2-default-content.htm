@@ -1,0 +1,65 @@
+<div title="StyleSheet" modifier="Oleg" created="200808071758" modified="200808110755" changecount="5">
+<pre>/*{{{*/
+
+div.header {
+padding-bottom:5pt;
+padding-left:10pt;
+padding-right:0pt;
+padding-top:3em;
+color:#465766;
+}
+
+/*}}}*/</pre>
+</div>
+<div title="PageTemplate" modifier="Oleg" created="200808071743" modified="200808071756" changecount="11">
+<pre>&lt;!--{{{--&gt;
+	
+  &lt;div class='header' macro='gradient vert [[#dce9f9]] [[#b1d0ed]]'&gt;
+      &lt;span class='siteTitle' refresh='content' tiddler='SiteTitle'&gt;&lt;/span&gt;&amp;nbsp;
+      &lt;span class='siteSubtitle' refresh='content' tiddler='SiteSubtitle'&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div id='mainMenu' refresh='content' tiddler='MainMenu'&gt;&lt;/div&gt;
+  &lt;div id='sidebar'&gt;
+    &lt;div id='sidebarOptions' refresh='content' tiddler='SideBarOptions'&gt;&lt;/div&gt;
+    &lt;div id='sidebarTabs' refresh='content' force='true' tiddler='SideBarTabs'&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id='displayArea'&gt;
+    &lt;div id='messageArea'&gt;&lt;/div&gt;
+    &lt;div id='tiddlerDisplay'&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;!--}}}--&gt;</pre>
+</div>
+<div title="Configuration" modifier="Oleg" created="200807140753" tags="excludeLists excludeSearch" changecount="1">
+<pre>PageTemplate
+|&gt;|&gt;|SiteTitle - SiteSubtitle|
+|MainMenu|DefaultTiddlers&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;ViewTemplate&lt;br /&gt;&lt;br /&gt;EditTemplate|SideBarOptions|
+|~|~|OptionsPanel|
+|~|~|AdvancedOptions|
+|~|~|&lt;&lt;tiddler Configuration.SideBarTabs&gt;&gt;|
+
+''StyleSheet:'' StyleSheetColors - StyleSheetLayout - StyleSheetPrint
+
+SiteUrl</pre>
+</div>
+<div title="DefaultTiddlers" modifier="Oleg" created="200807140752" changecount="1">
+<pre>
+[[ConfluenceIndex]]
+</pre>
+</div>
+<div title="MainMenu" modifier="Oleg" created="200807140753" modified="200807140754" tags="excludeLists excludeSearch" changecount="3">
+<pre></pre>
+</div>
+<div title="OptionsPanel" modifier="Oleg" created="200807140753" changecount="1">
+<pre>[[Configuration]]
+
+&lt;&lt;option txtUserName&gt;&gt;
+&lt;&lt;option chkSaveBackups&gt;&gt; SaveBackups
+&lt;&lt;option chkAutoSave&gt;&gt; AutoSave
+&lt;&lt;option chkRegExpSearch&gt;&gt; RegExpSearch
+&lt;&lt;option chkCaseSensitiveSearch&gt;&gt; CaseSensitiveSearch
+&lt;&lt;option chkAnimate&gt;&gt; EnableAnimations
+
+----
+Also see AdvancedOptions</pre>
+</div>

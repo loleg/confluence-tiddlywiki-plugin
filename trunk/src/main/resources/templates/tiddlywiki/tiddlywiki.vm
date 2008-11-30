@@ -1,0 +1,45 @@
+## <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+#include( "templates/tiddlywiki/0-head.htm" )
+## <!--POST-HEAD-END-->
+## * remove <title> from header and customize here:
+<title>$space.name (exported from Confluence)</title>
+</head>
+<body onload="main();" onunload="if(window.checkUnsavedChanges) checkUnsavedChanges(); if(window.scrubNodes) scrubNodes(document.body);">
+## <!--PRE-BODY-START-->
+#include( "templates/tiddlywiki/1-pre-body.htm" )
+## <!--POST-SHADOWAREA-->
+<div id="storeArea">
+## -- start storeArea
+#include( "templates/tiddlywiki/2-default-content.htm" )
+## -- attach MartinBudden's plugins
+<div title="ConfluenceAdaptorPlugin" modifier="MartinBudden" created="200807140751" tags="systemConfig excludeLists excludeSearch" changecount="1">
+<pre>#include( "templates/tiddlywiki/ConfluenceAdaptorPlugin.js" )</pre>
+</div>
+<div title="ConfluenceFormatterPlugin" modifier="MartinBudden" created="200807140745" tags="systemConfig excludeLists excludeSearch" changecount="1">
+<pre>#include( "templates/tiddlywiki/ConfluenceFormatterPlugin.js" )</pre>
+</div>
+## -- start tiddler processing
+<div title="SiteSubtitle" modifier="Oleg" created="200807140752" changecount="1">
+<pre>$spaceDescription</pre>
+</div>
+<div title="SiteTitle" modifier="Oleg" created="200807140751" modified="200807140752" changecount="3">
+<pre>$space.name</pre>
+</div>
+## //// GET TOP PAGES FOR INDEX
+<div title="ConfluenceIndex" modifier="Oleg" created="200807140746" modified="200807140747" changecount="1">
+<pre>
+#foreach ($pp in $topLevelPages)
+* [[$generalUtil.escapeXml($pp.title)]]
+#end
+</pre>
+</div>
+## //// GET ALL PAGES
+$!tiddlyPages
+## -- end tiddler processing
+## -- end storeArea
+</div>
+## <!--POST-STOREAREA-->
+#include( "templates/tiddlywiki/3-post-body.htm" )
+## <!--POST-SCRIPT-END-->
+</body>
+</html>
