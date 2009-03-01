@@ -9,6 +9,7 @@ import com.atlassian.confluence.util.velocity.VelocityUtils;
 import com.atlassian.confluence.renderer.PageContext;
 import com.atlassian.confluence.renderer.radeox.macros.MacroUtils;
 import com.opensymphony.webwork.ServletActionContext;
+import com.atlassian.confluence.setup.BootstrapManager;
 import com.atlassian.confluence.spaces.Space;
 import com.atlassian.confluence.spaces.SpaceManager;
 import com.atlassian.confluence.core.ConfluenceActionSupport;
@@ -20,12 +21,13 @@ import com.atlassian.confluence.util.GeneralUtil;
  */
 public class TiddlyWikiMacro extends BaseMacro {
 
-	private SpaceManager spaceManager;
 	private ConfluenceActionSupport confluenceActionSupport;
 	
-	public void setSpaceManager(SpaceManager spaceManager) {
-		this.spaceManager = spaceManager;
-	}
+	private SpaceManager spaceManager;
+	public void setSpaceManager(SpaceManager manager) {	this.spaceManager = manager; }
+	
+	private BootstrapManager bootstrapManager;
+	public void setBootstrapManager(BootstrapManager manager) { this.bootstrapManager = manager; }
 	
 	public boolean isInline() {
 		return false;
@@ -45,23 +47,36 @@ public class TiddlyWikiMacro extends BaseMacro {
 		// Default context
 		Map contextMap = MacroUtils.defaultVelocityContext();
 		
+		// Determine the space
 		String spaceKey = "";
 		if (parameters.containsKey("space"))
 			spaceKey = (String) parameters.get("space");
 		else if (renderContext instanceof PageContext)
 			spaceKey = ((PageContext) renderContext).getSpaceKey();
 
-		if (spaceKey != "")
-			contextMap.put("spaceKey", spaceKey);
+		// TODO: Optional start page parameter
+		// if (parameters.containsKey("page"))
+
+		// Create link to the action servlet
+		String linkUrl = "/plugins/tiddlywiki/tiddlywiki.action?";
 		
-		if (parameters.containsKey("title"))
+		// Add base path to the Confluence instance
+		linkUrl = bootstrapManager.getWebAppContextPath() + linkUrl;
+		
+		// Add space key
+		linkUrl += "key=" + spaceKey;
+		contextMap.put("linkUrl", linkUrl);
+		
+		// Optional link title parameter
+		boolean defaultTitle = true;
+		if (parameters.containsKey("title")) {
 			contextMap.put("linkTitle", parameters.get("title"));
-		else
+			defaultTitle = false;
+		} else {
 			contextMap.put("linkTitle", getText("tiddlywiki.macro.title"));
-		
-		if (parameters.containsKey("page"))
-			contextMap.put("startPage", parameters.get("page"));
-		
+		}
+		contextMap.put("defaultTitle", defaultTitle);
+						
 		// Render Velocity template
 		return VelocityUtils.getRenderedTemplate(
 				"/templates/macros/tiddlymacro.vm",
