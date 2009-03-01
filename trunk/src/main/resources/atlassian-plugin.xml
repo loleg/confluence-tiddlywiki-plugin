@@ -2,7 +2,7 @@
 	<plugin-info>
 		<description>Take your Wiki offline</description>
 		<vendor name="Oleg Lavrovsky" url="http://oleg.utou.ch" />
-		<version>1.0.12</version>
+		<version>1.0.15</version>
 	</plugin-info>
 	
 	<web-section key="tiddlyexport" name="Space Export Link" location="system.content.action/secondary" weight="500">

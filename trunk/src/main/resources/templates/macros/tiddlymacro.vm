@@ -1,4 +1,4 @@
-#if($spaceKey)
+#if(!$defaultTitle)
 <style type="text/css">
 div.downloadTiddlyWiki {
 	border:1px dashed gray;
@@ -19,9 +19,11 @@ div.downloadTiddlyWiki p {
 }
 </style>
 <div class="downloadTiddlyWiki">
-<a class="dltw" href="/plugins/tiddlywiki/tiddlywiki.action?key=$spaceKey">$linkTitle</a>
+<a class="dltw" href="$linkUrl" rel="nofollow">$linkTitle</a>
 <p>Right-click this link and <b>Save As ... tiddlywiki.html</b> file to download all 
 pages in the current space to a <a href="http://www.tiddlywiki.com">TiddlyWiki</a> 
 that you can take off-line, save to a USB stick, or share with a friend.</p>
 </div>
+#else
+<a href="$linkUrl" rel="nofollow">$linkTitle</a>
 #end
